@@ -21,12 +21,13 @@ Fraudulent transactions are rare compared with legitimate activity. A basic mode
 
 ## Dashboard Features
 
-- Executive overview and transaction counts.
-- Fraud analytics for amount and time patterns.
-- 30-feature transaction prediction.
-- Fraud probability, risk percentage, risk category, and decision threshold.
+- Cinematic dark-mode interface with responsive navigation and reusable KPI cards.
+- Executive transaction counts and actual amount distributions.
+- Interactive fraud analytics for class, amount, and time patterns.
+- Form-based 30-feature transaction prediction with probability and risk classification.
 - Actual Phase 6 model metrics and confusion matrix.
-- Filterable data explorer in local mode.
+- Searchable, filterable, paginated data explorer with filtered CSV export.
+- Software Testing Center with live pytest results and downloadable reports.
 - Cloud-safe aggregate fallback.
 
 ## Technologies
@@ -122,7 +123,7 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
 ```
 
-`requirements.txt` contains the dashboard runtime dependencies used by Streamlit Community Cloud. The development file adds test and exploratory-analysis dependencies.
+`requirements.txt` contains the dashboard runtime dependencies used by Streamlit Community Cloud, including pytest for the in-app Testing Center. The development file adds exploratory-analysis dependencies.
 
 ## Run the Dashboard
 
@@ -146,13 +147,15 @@ This uses held-out test data, not a real banking transaction.
 python -m pytest -q
 ```
 
-The latest executed suite reported **39 tests passed**.
+The latest executed suite reported **48 tests passed**.
 
 ## Project Structure
 
 ```text
 AI-Fraud-Detection-System/
 ├── app.py
+├── assets/
+│   └── dashboard.css
 ├── data/
 │   ├── creditcard.csv                 # excluded from Git
 │   ├── processed/                     # split and scaler, mostly excluded
@@ -171,9 +174,11 @@ AI-Fraud-Detection-System/
 │   ├── model_optimization.py
 │   ├── final_model_selection.py
 │   ├── prediction_engine.py
+│   ├── ui_components.py
 │   ├── predict.py
 │   └── dashboard.py
 ├── tests/
+├── testing_center.py
 ├── .streamlit/config.toml
 ├── requirements.txt
 ├── requirements-dev.txt
@@ -182,7 +187,7 @@ AI-Fraud-Detection-System/
 
 ## Testing
 
-The project uses pytest. Existing tests cover data validation and splitting, preprocessing and scaling, model metrics, class balancing and threshold search, final model selection, prediction input, dashboard filters, report parsing, and Streamlit loading.
+The project uses pytest. Tests cover data validation and splitting, preprocessing and scaling, model metrics, class balancing and threshold search, final model selection, prediction inputs, dashboard filtering and navigation, model predictions, and Testing Center reporting. The in-app center reports results from real pytest executions.
 
 ## Limitations
 

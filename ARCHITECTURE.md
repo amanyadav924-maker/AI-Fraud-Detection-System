@@ -84,9 +84,19 @@ flowchart TD
 
 - `app.py` is the Streamlit entry point.
 - `src/dashboard.py` provides data summaries, filtering, and report parsing.
-- The dashboard has overview, analytics, prediction, performance, and data-explorer sections.
+- `src/ui_components.py` provides shared page headings and KPI cards; `assets/dashboard.css` contains the responsive dark-theme styles.
+- `.streamlit/config.toml` sets the matching Streamlit dark palette and cyan accent.
+- The dashboard has overview, analytics, prediction, performance, data-explorer, and Software Testing Center sections.
 - Streamlit caches the dataset and model artifact.
 - In cloud mode, full raw data is excluded and small aggregate assets are used.
+- The Software Testing Center runs selected pytest categories and displays their JUnit XML results and downloadable reports.
+
+### Software Testing Center
+
+- `testing_center.py` launches pytest from the repository root and parses its JUnit XML.
+- Test modules remain under `tests/`; pytest category markers are configured in `pytest.ini`.
+- The center supports unit, integration, functional, boundary, system, and full-suite regression runs.
+- It reports case metadata, actual pass/fail results, duration, and failure output, with CSV, JSON, and JUnit XML downloads.
 
 ## Deployment Files
 

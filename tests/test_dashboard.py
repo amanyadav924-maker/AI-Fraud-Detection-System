@@ -77,11 +77,27 @@ def test_streamlit_app_loads_without_exceptions() -> None:
     app.run()
 
     assert not app.exception
-    app.sidebar.radio[0].set_value("Software Testing Center").run()
+    pages = [
+        "Overview",
+        "Fraud Analytics",
+        "Transaction Prediction",
+        "Model Performance",
+        "Data Explorer",
+        "Software Testing Center",
+    ]
+    for page in pages:
+        app.sidebar.radio[0].set_value(page).run()
+        assert not app.exception
+
+    app.sidebar.radio[0].set_value("Transaction Prediction").run()
+    app.form_submit_button[0].click().run()
 
     assert not app.exception
-    assert any("Software Testing Center" in item.value for item in app.markdown)
-    assert any("generate live results" in item.value for item in app.info)
+    assert any("MODEL ASSESSMENT" in item.value for item in app.markdown)
+
+    app.sidebar.radio[0].set_value("Software Testing Center").run()
+    assert not app.exception
+    assert any("Choose a test category" in item.value for item in app.info)
     app.button[0].click().run()
 
     assert not app.exception

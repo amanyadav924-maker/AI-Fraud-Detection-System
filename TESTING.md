@@ -45,10 +45,13 @@ The project uses `pytest`, executed with the virtual environment's Python interp
 - Missing feature rejection.
 - Non-numeric feature rejection.
 - Incorrect feature count rejection.
+- Negative, non-finite, and non-numeric transaction amount rejection.
+- Zero transaction amount acceptance.
 - Low, medium, and high risk categories.
 - Fraud and legitimate predictions.
 - Missing model-file handling.
 - Invalid model artifact handling.
+- Saved model/scaler prediction against a deployment sample.
 
 ### Dashboard
 
@@ -57,23 +60,33 @@ The project uses `pytest`, executed with the virtual environment's Python interp
 - Actual final-report parsing.
 - Cloud deployment summary loading.
 - Deployment test-row loading.
-- Streamlit `AppTest` loading with no exceptions.
+- Streamlit `AppTest` navigation and pytest execution in the Software Testing Center.
+
+### Software Testing Center
+
+- Pytest cases are grouped as Unit, Integration, Functional, Boundary, System, and Regression tests.
+- JUnit XML supplies each displayed case's status and duration; test markers supply case IDs and descriptions.
+- Failed pytest cases include their actual failure details.
+- CSV, JSON, and JUnit XML reports are generated from each execution.
+- The dashboard runs a selected category only after the user clicks **Run pytest tests**.
 
 ## Actual Executed Results
 
 Latest local verification:
 
 ```text
-39 passed
+48 passed
 ```
 
 The suite was executed with:
 
 ```powershell
-python -m pytest -q
+.\.venv\Scripts\python.exe -m pytest -q
 ```
 
-The runtime requirements were installed and checked on Linux Python 3.12.3. A Linux cloud-mode smoke test loaded the final model and scaler, predicted from a deployment sample, loaded the summary and evaluation report without the raw dataset, and exercised all dashboard pages through Streamlit AppTest. The local Streamlit server also returned HTTP 200.
+The Testing Center categories were also executed through its pytest/JUnit runner. Results were: Unit 3/3, Integration 4/4, Functional 2/2, Boundary 10/10, System 1/1, and Regression 48/48 passed. The system test navigates to the center and runs the Unit category through the dashboard UI.
+
+Prior deployment-readiness validation: the runtime requirements were installed and checked on Linux Python 3.12.3. A Linux cloud-mode smoke test loaded the final model and scaler, predicted from a deployment sample, loaded the summary and evaluation report without the raw dataset, and exercised the dashboard through Streamlit AppTest. The local Streamlit server also returned HTTP 200.
 
 ## Limitations
 
