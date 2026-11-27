@@ -1,0 +1,68 @@
+AI-Based Credit Card Fraud Detection - Baseline Model Training Report
+========================================================================
+
+Training setup
+------------------------------------------------------------------------
+Training data shape: 226,980 rows x 30 features
+Testing data shape: 56,746 rows x 30 features
+Random seed: 42
+Reused the existing Phase 3 processed train-test split.
+No SMOTE, oversampling, undersampling, or class balancing was applied.
+
+Evaluation Results
+------------------------------------------------------------------------
+Logistic Regression
+  Confusion Matrix (TN, FP; FN, TP): [[56642, 9], [44, 51]]
+  True Negatives: 56,642
+  False Positives: 9
+  False Negatives: 44
+  True Positives: 51
+  Precision: 0.850000
+  Recall: 0.536842
+  F1-score: 0.658065
+  Accuracy: 0.999066
+  ROC-AUC: 0.987232
+  Precision-Recall AUC: 0.772023
+
+Decision Tree
+  Confusion Matrix (TN, FP; FN, TP): [[56633, 18], [29, 66]]
+  True Negatives: 56,633
+  False Positives: 18
+  False Negatives: 29
+  True Positives: 66
+  Precision: 0.785714
+  Recall: 0.694737
+  F1-score: 0.737430
+  Accuracy: 0.999172
+  ROC-AUC: 0.950471
+  Precision-Recall AUC: 0.757173
+
+Random Forest
+  Confusion Matrix (TN, FP; FN, TP): [[56641, 10], [35, 60]]
+  True Negatives: 56,641
+  False Positives: 10
+  False Negatives: 35
+  True Positives: 60
+  Precision: 0.857143
+  Recall: 0.631579
+  F1-score: 0.727273
+  Accuracy: 0.999207
+  ROC-AUC: 0.976246
+  Precision-Recall AUC: 0.730199
+
+Model Comparison
+------------------------------------------------------------------------
+Most fraudulent transactions detected: Decision Tree
+Fewest false positives: Logistic Regression
+Best F1-score: Decision Tree
+
+Notes
+------------------------------------------------------------------------
+Accuracy can be misleading because predicting every transaction as legitimate
+would still be highly accurate in a dataset where fraud is rare.
+Recall shows the fraction of actual fraud cases detected.
+Precision shows the fraction of fraud alerts that are genuinely fraudulent.
+ROC-AUC summarizes ranking across thresholds; PR-AUC is especially informative
+for highly imbalanced data because it focuses on the fraud-positive class.
+The best-F1 model is a baseline candidate for further threshold tuning and
+class-imbalance experiments in later phases.

@@ -1,0 +1,66 @@
+AI-Based Fraud Detection - Final Model Selection and Validation
+========================================================================
+
+Existing Phase 4/5 Findings
+------------------------------------------------------------------------
+Baseline: Logistic Regression had 51 TP, 44 FN, 9 FP, F1 0.658065.
+Baseline: Decision Tree had 66 TP, 29 FN, 18 FP, F1 0.737430.
+Baseline: Random Forest had 60 TP, 35 FN, 10 FP, F1 0.727273.
+Phase 5 class-weighted Logistic Regression had 76 TP, 19 FN, 16 FP, F1 0.812834.
+Phase 5 SMOTE Logistic Regression had 84 TP, 11 FN, 204 FP, F1 0.438642.
+
+Final Candidate and Selection
+------------------------------------------------------------------------
+Selected model: class-weighted Logistic Regression
+Fraud weight: 5
+Selected threshold: 0.40
+Selection used only a validation partition created from the training data.
+The held-out test set was not used for model or threshold selection.
+The threshold was chosen by highest validation F1-score; ties prefer recall.
+
+Validation Thresholds
+------------------------------------------------------------------------
+Threshold | Precision | Recall | F1 | False Positives | False Negatives
+0.05 | 0.410596 | 0.815789 | 0.546256 | 89 | 14
+0.10 | 0.648936 | 0.802632 | 0.717647 | 33 | 15
+0.15 | 0.693182 | 0.802632 | 0.743902 | 27 | 15
+0.20 | 0.717647 | 0.802632 | 0.757764 | 24 | 15
+0.25 | 0.743902 | 0.802632 | 0.772152 | 21 | 15
+0.30 | 0.750000 | 0.789474 | 0.769231 | 20 | 16
+0.35 | 0.766234 | 0.776316 | 0.771242 | 18 | 17
+0.40 | 0.840580 | 0.763158 | 0.800000 | 11 | 18
+0.45 | 0.833333 | 0.723684 | 0.774648 | 11 | 21
+0.50 | 0.833333 | 0.723684 | 0.774648 | 11 | 21
+0.55 | 0.833333 | 0.723684 | 0.774648 | 11 | 21
+0.60 | 0.828125 | 0.697368 | 0.757143 | 11 | 23
+0.65 | 0.828125 | 0.697368 | 0.757143 | 11 | 23
+0.70 | 0.822581 | 0.671053 | 0.739130 | 11 | 25
+0.75 | 0.816667 | 0.644737 | 0.720588 | 11 | 27
+0.80 | 0.814815 | 0.578947 | 0.676923 | 10 | 32
+0.85 | 0.807692 | 0.552632 | 0.656250 | 10 | 34
+0.90 | 0.807692 | 0.552632 | 0.656250 | 10 | 34
+0.95 | 0.808511 | 0.500000 | 0.617886 | 9 | 38
+
+Final Held-Out Test Results
+------------------------------------------------------------------------
+Test samples: 56,746
+Confusion Matrix (TN, FP; FN, TP): [[56635, 16], [19, 76]]
+True Negatives: 56,635
+False Positives: 16
+False Negatives: 19
+True Positives: 76
+Precision: 0.826087
+Recall: 0.800000
+F1-score: 0.812834
+Accuracy: 0.999383
+ROC-AUC: 0.988116
+Precision-Recall AUC: 0.774204
+
+Why This Model and Threshold
+------------------------------------------------------------------------
+The class-weighted model materially improved fraud recall without the severe
+false-positive count produced by SMOTE Logistic Regression.
+The selected threshold is not assumed to be 0.50; it was selected from validation
+data by fraud-oriented F1-score and then evaluated once on the held-out test set.
+This model is suitable as a strong baseline for prediction and future threshold
+experimentation, but it is not a production-ready system.

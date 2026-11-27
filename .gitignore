@@ -1,0 +1,66 @@
+# Python environments
+.venv/
+venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Local datasets and sensitive data
+data/creditcard.csv
+data/*.csv
+data/*.xlsx
+data/*.parquet
+
+# Trained artifacts
+models/*.joblib
+models/*.pkl
+
+# Keep only the deployed final model; exclude experimental artifacts
+!models/final_fraud_model.joblib
+
+# Processed training artifacts
+data/processed/*.csv
+data/processed/*.joblib
+
+# Deployment-safe scaler and aggregate bundle
+!data/processed/amount_time_scaler.joblib
+
+# Streamlit local state
+.streamlit/secrets.toml
+
+# Environment and secret files
+.env
+.env.*
+secrets.toml
+secrets.yaml
+secrets.yml
+*.pem
+*.key
+
+# Temporary files and logs
+*.tmp
+*.temp
+*.bak
+*.log

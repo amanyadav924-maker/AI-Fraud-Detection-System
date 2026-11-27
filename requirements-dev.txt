@@ -1,0 +1,5 @@
+-r requirements.txt
+
+# Test suite and exploratory analysis
+pytest>=8,<10
+seaborn>=0.13,<1

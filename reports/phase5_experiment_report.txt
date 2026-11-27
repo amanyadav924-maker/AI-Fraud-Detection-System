@@ -1,0 +1,55 @@
+AI-Based Fraud Detection - Phase 5 Imbalance Handling and Optimization
+========================================================================
+
+Experimental setup
+------------------------------------------------------------------------
+Random seed: 42
+The original Phase 3/4 held-out test data was preserved and not resampled.
+Validation was created only from the training partition.
+Hyperparameters and thresholds were selected using training validation data,
+not by repeatedly evaluating the final test set.
+
+Baseline reference
+------------------------------------------------------------------------
+Baseline Phase 4 results: Logistic Regression 51 TP / 44 FN / 9 FP,
+Decision Tree 66 TP / 29 FN / 18 FP, Random Forest 60 TP / 35 FN / 10 FP.
+
+Experiment Results
+------------------------------------------------------------------------
+Class-weighted Logistic Regression
+  Threshold: 0.40
+  Confusion Matrix (TN, FP; FN, TP): [[56635, 16], [19, 76]]
+  False Positives: 16
+  False Negatives: 19
+  Precision: 0.826087
+  Recall: 0.800000
+  F1-score: 0.812834
+  Accuracy: 0.999383
+  ROC-AUC: 0.988116
+  Precision-Recall AUC: 0.774204
+
+SMOTE Logistic Regression
+  Threshold: 0.95
+  Confusion Matrix (TN, FP; FN, TP): [[56447, 204], [11, 84]]
+  False Positives: 204
+  False Negatives: 11
+  Precision: 0.291667
+  Recall: 0.884211
+  F1-score: 0.438642
+  Accuracy: 0.996211
+  ROC-AUC: 0.985326
+  Precision-Recall AUC: 0.750227
+
+Model Selection
+------------------------------------------------------------------------
+Best F1-score: Class-weighted Logistic Regression
+Best PR-AUC: Class-weighted Logistic Regression
+Fewest false negatives: SMOTE Logistic Regression
+Fewest false positives: Class-weighted Logistic Regression
+
+Trade-off
+------------------------------------------------------------------------
+Lower thresholds typically detect more fraud but create more false positives.
+Higher thresholds reduce false alerts but increase missed fraud cases.
+The selected model is chosen primarily by F1-score and PR-AUC, while also
+reviewing false negatives because missed fraud can be costly.

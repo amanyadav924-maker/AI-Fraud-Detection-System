@@ -1,0 +1,127 @@
+AI-Based Credit Card Fraud Detection - Exploratory Data Analysis
+========================================================================
+
+Dataset
+------------------------------------------------------------------------
+Source: C:\Users\amany\Downloads\AI-Fraud-Detection-System\data\creditcard.csv
+Rows: 284,807
+Columns: 31
+Duplicate records: 1,081
+Columns containing missing values: 0
+
+Data Types
+------------------------------------------------------------------------
+Time      float64
+V1        float64
+V2        float64
+V3        float64
+V4        float64
+V5        float64
+V6        float64
+V7        float64
+V8        float64
+V9        float64
+V10       float64
+V11       float64
+V12       float64
+V13       float64
+V14       float64
+V15       float64
+V16       float64
+V17       float64
+V18       float64
+V19       float64
+V20       float64
+V21       float64
+V22       float64
+V23       float64
+V24       float64
+V25       float64
+V26       float64
+V27       float64
+V28       float64
+Amount    float64
+Class       int64
+
+Missing Values
+------------------------------------------------------------------------
+Time      0
+V1        0
+V2        0
+V3        0
+V4        0
+V5        0
+V6        0
+V7        0
+V8        0
+V9        0
+V10       0
+V11       0
+V12       0
+V13       0
+V14       0
+V15       0
+V16       0
+V17       0
+V18       0
+V19       0
+V20       0
+V21       0
+V22       0
+V23       0
+V24       0
+V25       0
+V26       0
+V27       0
+V28       0
+Amount    0
+Class     0
+
+Class Distribution
+------------------------------------------------------------------------
+Legitimate transactions (Class 0): 284,315
+Legitimate percentage: 99.8273%
+Fraudulent transactions (Class 1): 492
+Fraudulent percentage: 0.1727%
+Legitimate-to-fraud ratio: approximately 577.9:1
+
+Class Imbalance Analysis
+------------------------------------------------------------------------
+Fraud is a rare event, making up only a small fraction of the dataset.
+This creates a major machine-learning problem because a model could achieve
+high accuracy by predicting every transaction as legitimate while detecting
+almost no fraud. Accuracy alone is therefore misleading. Recall is important
+because it measures how many actual fraudulent transactions are found. Precision
+is important because it measures how many predicted fraud cases are genuinely
+fraudulent. Evaluation should use precision, recall, F1-score, ROC-AUC, and
+confusion matrices rather than accuracy alone.
+
+Amount Statistics
+------------------------------------------------------------------------
+count    284807.000000
+mean         88.349619
+std         250.120109
+min           0.000000
+25%           5.600000
+50%          22.000000
+75%          77.165000
+max       25691.160000
+
+Time Statistics
+------------------------------------------------------------------------
+count    284807.000000
+mean      94813.859575
+std       47488.145955
+min           0.000000
+25%       54201.500000
+50%       84692.000000
+75%      139320.500000
+max      172792.000000
+Time is recorded as seconds elapsed from the first transaction in the dataset.
+
+Visualizations
+------------------------------------------------------------------------
+C:\Users\amany\Downloads\AI-Fraud-Detection-System\reports\plots\class_distribution.png
+C:\Users\amany\Downloads\AI-Fraud-Detection-System\reports\plots\amount_distribution.png
+C:\Users\amany\Downloads\AI-Fraud-Detection-System\reports\plots\fraud_amount_distribution.png
+C:\Users\amany\Downloads\AI-Fraud-Detection-System\reports\plots\time_distribution.png

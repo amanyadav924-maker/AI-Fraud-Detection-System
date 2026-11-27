@@ -1,0 +1,51 @@
+AI-Based Credit Card Fraud Detection - Data Preprocessing Report
+========================================================================
+
+Data Validation
+------------------------------------------------------------------------
+Missing values: 0
+Duplicate records found: 1081
+Validated Class values: [0, 1]
+Non-numeric feature columns: None
+
+Cleaning and Raw/Processed Separation
+------------------------------------------------------------------------
+Rows before duplicate removal: 284,807
+Rows after duplicate removal: 283,726
+Duplicate rows removed: 1,081
+Original raw file unchanged: C:\Users\amany\Downloads\AI-Fraud-Detection-System\data\creditcard.csv
+Processed directory: C:\Users\amany\Downloads\AI-Fraud-Detection-System\data\processed
+
+Features and Target
+------------------------------------------------------------------------
+Target column: Class
+Number of features: 30
+Features used:
+Time, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, Amount
+
+Train-Test Split
+------------------------------------------------------------------------
+Random seed: 42
+Test size: 20%
+Split type: Stratified train-test split
+Training samples: 226,980
+Training legitimate (Class 0): 226,602
+Training fraudulent (Class 1): 378
+Testing samples: 56,746
+Testing legitimate (Class 0): 56,651
+Testing fraudulent (Class 1): 95
+
+Preprocessing Method
+------------------------------------------------------------------------
+Amount and Time are standardized using zero mean and unit population deviation.
+The scaler is fit only on training Amount and Time values.
+The fitted training scaler is then applied to test Amount and Time values.
+No scaling is applied to the PCA-derived V1-V28 feature columns.
+
+Class Imbalance Decision
+------------------------------------------------------------------------
+No SMOTE, oversampling, undersampling, or other balancing was applied.
+The original class ratio is retained in both splits.
+Appropriate next-phase strategies include class-weighted models,
+precision/recall/F1-threshold analysis, ROC-AUC, and optionally
+train-only resampling techniques evaluated through cross-validation.
