@@ -146,7 +146,7 @@ This uses held-out test data, not a real banking transaction.
 python -m pytest -q
 ```
 
-The latest executed suite reported **38 tests passed**.
+The latest executed suite reported **39 tests passed**.
 
 ## Project Structure
 
@@ -218,5 +218,7 @@ No commit or remote configuration has been created.
 ## Deployment Status
 
 Local Streamlit execution is verified. GitHub publication and Streamlit Community Cloud deployment have not occurred and require explicit confirmation.
+
+The app and its model artifact were smoke-tested on Linux with Python 3.12.3, which matches the current Community Cloud default. Select Python 3.12 in the app's Advanced settings when deploying.
 
 The main application file is `app.py`; no API credentials are required.

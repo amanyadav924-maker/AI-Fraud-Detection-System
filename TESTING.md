@@ -64,7 +64,7 @@ The project uses `pytest`, executed with the virtual environment's Python interp
 Latest local verification:
 
 ```text
-38 passed
+39 passed
 ```
 
 The suite was executed with:
@@ -73,7 +73,7 @@ The suite was executed with:
 python -m pytest -q
 ```
 
-Additional behavior is reported with the deployment-readiness validation results for the current revision.
+The runtime requirements were installed and checked on Linux Python 3.12.3. A Linux cloud-mode smoke test loaded the final model and scaler, predicted from a deployment sample, loaded the summary and evaluation report without the raw dataset, and exercised all dashboard pages through Streamlit AppTest. The local Streamlit server also returned HTTP 200.
 
 ## Limitations
 
