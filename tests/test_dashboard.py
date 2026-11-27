@@ -3,6 +3,7 @@
 from pathlib import Path
 
 import pandas as pd
+import pytest
 from streamlit.testing.v1 import AppTest
 
 from src.dashboard import (
@@ -64,12 +65,31 @@ def test_deployment_test_row_loads_without_raw_dataset() -> None:
     assert "SampleClass" not in row
 
 
+@pytest.mark.system
+@pytest.mark.case(
+    case_id="TC-SYSTEM-NAVIGATION",
+    description="Open the Software Testing Center and execute a pytest category",
+    expected_result="The center displays actual category results without exceptions.",
+)
 def test_streamlit_app_loads_without_exceptions() -> None:
     app_path = Path(__file__).resolve().parent.parent / "app.py"
     app = AppTest.from_file(app_path, default_timeout=60)
     app.run()
 
     assert not app.exception
+    app.sidebar.radio[0].set_value("Software Testing Center").run()
+
+    assert not app.exception
+    assert any("Software Testing Center" in item.value for item in app.markdown)
+    assert any("generate live results" in item.value for item in app.info)
+    app.button[0].click().run()
+
+    assert not app.exception
+    assert any(
+        metric.label == "Test Cases" and int(metric.value) > 0
+        for metric in app.metric
+    )
+    assert any("completed successfully" in item.value for item in app.success)
 
 
 def test_final_report_parser_reads_actual_metrics(tmp_path: Path) -> None:

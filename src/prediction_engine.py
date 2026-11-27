@@ -92,6 +92,11 @@ def validate_transaction(
     if not np.all(np.isfinite(numeric_values)):
         raise PredictionInputError("Feature values must be finite numbers; NaN and infinity are invalid.")
 
+    if "Amount" in feature_names:
+        amount_index = list(feature_names).index("Amount")
+        if numeric_values[amount_index] < 0:
+            raise PredictionInputError("Amount must be a non-negative number.")
+
     return pd.DataFrame([numeric_values], columns=list(feature_names))
 
 

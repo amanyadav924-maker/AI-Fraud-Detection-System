@@ -1,5 +1,4 @@
 -r requirements.txt
 
-# Test suite and exploratory analysis
-pytest>=8,<10
+# Exploratory analysis
 seaborn>=0.13,<1
